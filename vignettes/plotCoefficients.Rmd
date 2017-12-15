@@ -1,0 +1,59 @@
+---
+title: "plot coefficients"
+author: "Bernd Jagla"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plot coefficients}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(DESeq2)
+library(crtRNAtools)
+
+```
+
+```{r, include=TRUE, warning=FALSE, eval=FALSE}
+set.seed(1)
+geneName="gene130"
+
+# simple design
+dds <-  dds <- makeExampleDESeqDataSet()
+dds = DESeq(dds)
+plotCoefficients(dds, geneName)
+colData(dds)
+
+
+
+
+dds <- makeComplexDESeqData()
+dds = DESeq(dds)
+
+plotCoefficients(dds, geneName, design=)
+coef(dds)[geneName,]
+
+
+dds <- makeComplexDESeqData(designStr = "~ condition1 + condition2")
+dds = DESeq(dds)
+
+plotCoefficients(dds, geneName)
+plotCoefficients(dds, geneName, legend = F)
+coef(dds)[geneName,]
+
+
+dds <- makeComplexDESeqData(designStr = "~ condition1 * condition2")
+dds = DESeq(dds)
+
+plotCoefficients(dds, geneName)
+plotCoefficients(dds, geneName, legend = F)
+coef(dds)[geneName,]
+
+
+```
+

@@ -13,4 +13,10 @@ RoxygenNote: 6.0.1
 Imports:
     RColorBrewer, 
     DESeq2,
-    SummarizedExperiment
+    SummarizedExperiment,
+    GenomicRanges,
+    IRanges,
+    S4Vectors
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
