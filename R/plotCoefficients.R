@@ -53,6 +53,11 @@ plotCoefficients <- function(dds, geneName, legend=TRUE){
   countsName=names(gene1Counts)[1]
   coefs = as.data.frame(coef(dds[geneName]))
 
+  if(is.na(coefs[1,1])){
+    warning("coefficients not calculated (NA)")
+    return(NA)
+  }
+
   # brewer can only handle 12 different colors
   if(length(coef) > 12){
     warning("more than 12 coefficients")
