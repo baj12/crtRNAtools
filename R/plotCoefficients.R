@@ -88,7 +88,8 @@ plotCoefficients <- function(dds, geneName, legend=TRUE){
 
   # find ylim and number of arrow to plot per slot
   plotParameters = ._findplotParameters(bp_names, dds, intgrpNoInt, coefs)
-  ylim = plotParameters[[1]]
+  ylim[1] = min(plotParameters[[1]][1],min(gene1Counts$count))
+  ylim[2] = max(plotParameters[[1]][2],round(max(gene1Counts$count)+0.5))
   arrowCount = plotParameters[[2]]
   legendPos = plotParameters[[3]]
 
